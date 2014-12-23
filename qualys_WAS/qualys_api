@@ -1,0 +1,3 @@
+curl -u "quest_hb1:br41ojybEC" -H "X-Requested-With: Curl" -X "POST" -d "action=list" "https://qualysapi.qualys.com/api/2.0/fo/knowledge_base/vuln/" > output.txt
+curl -u "quest_hb1:br41ojybEC" "https://qualysapi.qualys.com/qps/rest/3.0/download/was/wasscan/4721953"
+curl -u "quest_hb1:br41ojybEC" -H "content-type: text/xml" -X "POST" --data-binary @- "https://qualysapi.qualys.com/qps/rest/3.0/count/was/wasscan" < file.xml

